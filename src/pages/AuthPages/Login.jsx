@@ -61,13 +61,13 @@ const Login = () => {
 
   return (
     <div>
-      <div className="bg-primary text-white text-center">
+      <div className="bg-prim2 text-white text-center">
         <h2 className="py-16 text-2xl md:text-4xl font-bold">Login</h2>
       </div>
 
       <div className="flex flex-col items-center justify-center my-8 text-dark">
         <div className="text-center grid gap-4 px-4">
-          <p className="text-primary">Welcome Back!</p>
+          <p className="text-prim2">Welcome Back!</p>
           <p className="font-bold text-2xl md:text-4xl">Member Login</p>
           <p>Access to all features. No credit card required.</p>
           <button
@@ -122,7 +122,7 @@ const Login = () => {
               </div>
             </div>
             <input
-              className="rounded-full px-4 py-2 border my-5 cursor-pointer text-white font-semibold bg-primary hover:bg-dark transition-all"
+              className="rounded-full px-4 py-2 border my-5 cursor-pointer text-white font-semibold bg-prim2 hover:bg-primary transition-all"
               type="submit"
               value="Login"
             />
@@ -131,7 +131,7 @@ const Login = () => {
             Don't have an account? Please{" "}
             <Link
               to="/signup"
-              className="underline hover:text-primary font-medium"
+              className="underline hover:text-prim2 font-medium"
             >
               Register Here
             </Link>

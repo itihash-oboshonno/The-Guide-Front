@@ -27,8 +27,8 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "font-bold text-dark underline decoration-primary decoration-4 lg:underline-offset-8"
-              : "font-medium text-dark hover:text-primary"
+              ? "font-bold text-dark underline decoration-prim2 decoration-4 lg:underline-offset-8"
+              : "font-medium text-dark hover:text-prim2"
           }
         >
           Home
@@ -39,8 +39,8 @@ const Navbar = () => {
           to="/add-blog"
           className={({ isActive }) =>
             isActive
-              ? "font-bold text-dark underline decoration-primary decoration-4 lg:underline-offset-8"
-              : "font-medium text-dark hover:text-primary"
+              ? "font-bold text-dark underline decoration-prim2 decoration-4 lg:underline-offset-8"
+              : "font-medium text-dark hover:text-prim2"
           }
         >
           Add Blog
@@ -51,8 +51,8 @@ const Navbar = () => {
           to="/all-blogs"
           className={({ isActive }) =>
             isActive
-              ? "font-bold text-dark underline decoration-primary decoration-4 lg:underline-offset-8"
-              : "font-medium text-dark hover:text-primary"
+              ? "font-bold text-dark underline decoration-prim2 decoration-4 lg:underline-offset-8"
+              : "font-medium text-dark hover:text-prim2"
           }
         >
           All Blogs
@@ -63,8 +63,8 @@ const Navbar = () => {
           to="/featured-blogs"
           className={({ isActive }) =>
             isActive
-              ? "font-bold text-dark underline decoration-primary decoration-4 lg:underline-offset-8"
-              : "font-medium text-dark hover:text-primary"
+              ? "font-bold text-dark underline decoration-prim2 decoration-4 lg:underline-offset-8"
+              : "font-medium text-dark hover:text-prim2"
           }
         >
           Featured Blogs
@@ -75,8 +75,8 @@ const Navbar = () => {
           to="/wishlist"
           className={({ isActive }) =>
             isActive
-              ? "font-bold text-dark underline decoration-primary decoration-4 lg:underline-offset-8"
-              : "font-medium text-dark hover:text-primary"
+              ? "font-bold text-dark underline decoration-prim2 decoration-4 lg:underline-offset-8"
+              : "font-medium text-dark hover:text-prim2"
           }
         >
           Wishlist
@@ -117,7 +117,7 @@ const Navbar = () => {
                 <Link to="/">
                   <button
                     onClick={handleSignOut}
-                    className="text-white text-sm md:text-base md:font-semibold bg-primary px-3 py-2 md:px-6 md:py-2.5 rounded-full hover:shadow-lg transition-all"
+                    className="text-white text-sm md:text-base md:font-semibold bg-prim2 px-3 py-2 md:px-6 md:py-2.5 rounded-full hover:shadow-lg hover:bg-primary transition-all"
                   >
                     Logout
                   </button>
@@ -128,12 +128,12 @@ const Navbar = () => {
             <>
               <div className="flex items-center gap-3">
                 <Link to="/login">
-                  <button className="text-dark text-sm md:text-base md:font-semibold bg-[#F0EEFF] px-4 py-2 md:px-6 md:py-2.5 rounded-full hover:shadow-lg transition-all">
+                  <button className="text-white text-sm md:text-base md:font-semibold bg-prim2 px-4 py-2 md:px-6 md:py-2.5 rounded-full hover:shadow-lg hover:bg-primary transition-all">
                     Login
                   </button>
                 </Link>
                 <Link to="/signup">
-                  <button className="text-white text-sm md:text-base md:font-semibold bg-primary px-3 py-2 md:px-6 md:py-2.5 rounded-full hover:shadow-lg transition-all">
+                  <button className="text-white text-sm md:text-base md:font-semibold bg-prim2 px-3 py-2 md:px-6 md:py-2.5 rounded-full hover:shadow-lg hover:bg-primary transition-all">
                     Sign Up
                   </button>
                 </Link>

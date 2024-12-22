@@ -108,13 +108,13 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="bg-primary text-white text-center">
+      <div className="bg-prim2 text-white text-center">
         <h2 className="py-16 text-2xl md:text-4xl font-bold">Sign Up</h2>
       </div>
 
       <div className="flex flex-col items-center justify-center my-8 text-dark">
         <div className="text-center grid gap-4 px-4">
-          <p className="text-primary">Register</p>
+          <p className="text-prim2">Register</p>
           <p className="font-bold text-2xl md:text-4xl">Start for free Today</p>
           <p>Access to all features. No credit card required.</p>
           <button onClick={handleLoginGoogle} className="font-semibold flex items-center justify-center gap-4 border border-gray-200 rounded-full hover:shadow transition-all px-4 py-2 my-4">
@@ -175,14 +175,14 @@ const SignUp = () => {
               />
             </div>
             <input
-              className="rounded-full px-4 py-2 border my-5 cursor-pointer text-white font-semibold bg-primary hover:bg-dark transition-all"
+              className="rounded-full px-4 py-2 border my-5 cursor-pointer text-white font-semibold bg-prim2 hover:bg-primary transition-all"
               type="submit"
               value="Sign Up"
             />
           </form>
           <p className="text-center text-sm">
             Already have an account? Please{" "}
-            <Link to="/login" className="underline hover:text-primary font-medium">
+            <Link to="/login" className="underline hover:text-prim2 font-medium">
               Login Here
             </Link>
           </p>
