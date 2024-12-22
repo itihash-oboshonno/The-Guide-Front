@@ -8,8 +8,10 @@ export default {
     extend: {
       colors: {
         primary: "#190482",
-        dark: "#363848",
-        accent: "#FE8D4D",
+        dark: "#0d024b",
+        accent: "#C4B0FF",
+        prim2: "#4942E4",
+        prim3: "#8696FE",
         black: "#1F2131",
       },
       screens: {
