@@ -8,27 +8,27 @@ const Footer = () => {
     const footerNav = (
         <>
           <li>
-            <Link to="/">
+            <Link to="/" className='hover:text-accent'>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/add-blog">
+            <Link to="/add-blog" className='hover:text-accent'>
               Add Blog
             </Link>
           </li>
           <li>
-            <Link to="/all-blogs">
+            <Link to="/all-blogs" className='hover:text-accent'>
               All Blogs
             </Link>
           </li>
           <li>
-            <Link to="/featured-blogs">
+            <Link to="/featured-blogs" className='hover:text-accent'>
               Featured Blogs
             </Link>
           </li>
           <li>
-            <Link to="/wishlist">
+            <Link to="/wishlist" className='hover:text-accent'>
               Wishlist
             </Link>
           </li>
