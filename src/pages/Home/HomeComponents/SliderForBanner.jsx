@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react"
+import { Link } from "react-router-dom";
 
 const SliderForBanner = () => {
     const slides = [
@@ -44,12 +45,14 @@ const SliderForBanner = () => {
       </div>
 
       <div className="flex justify-start items-center gap-4 my-16 text-xs xxs:text-sm sm:text-base">
-        <motion.button
-        className="bg-prim2 text-white md:text-lg font-semibold px-6 py-2 md:px-8 md:py-3 rounded-full hover:bg-primary hover:shadow-lg"
-        whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}
-        >
-          Discover Now
-        </motion.button>
+        <Link to="/all-blogs">
+          <motion.button
+          className="bg-prim2 text-white md:text-lg font-semibold px-6 py-2 md:px-8 md:py-3 rounded-full hover:bg-primary hover:shadow-lg"
+          whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}
+          >
+            Discover Now
+          </motion.button>
+        </Link>
       </div>
 
       <div className="flex justify-start">
