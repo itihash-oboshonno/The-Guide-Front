@@ -86,7 +86,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className={atHomePage ? "bg-[#F8F9FD]" : ""}>
+    <div className={atHomePage ? "bg-[#f9f8fd]" : ""}>
       <nav className="flex justify-between items-center max-w-screen-2xl mx-auto px-4 py-8">
         <div>
           <Link to="/" className="flex items-center gap-3">
