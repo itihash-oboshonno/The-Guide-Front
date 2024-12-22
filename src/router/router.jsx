@@ -9,6 +9,8 @@ import AllBlogs from "../pages/AllBlogs/AllBlogs";
 import FeaturedBlogs from "../pages/FeaturedBlogs/FeaturedBlogs";
 import Login from "../pages/AuthPages/Login";
 import SignUp from "../pages/AuthPages/SignUp";
+import DetailedBlog from "../pages/PrivatePages/DetailedBlog/DetailedBlog";
+import UpdateBlog from "../pages/PrivatePages/UpdateBlog/UpdateBlog";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: "/wishlist",
         element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
+      },
+      {
+        path: `/post/:id`,
+        element: <PrivateRoute><DetailedBlog></DetailedBlog></PrivateRoute>,
+      },
+      {
+        path: `/updatePost/:id`,
+        element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
       },
       {
         path: "/login",
