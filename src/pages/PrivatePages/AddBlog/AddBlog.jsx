@@ -86,14 +86,14 @@ const AddBlog = () => {
                 <select
                 name="category"
                 className="rounded-lg p-2 border w-full">
-                    <option value="art">Art</option>
-                    <option value="automobile">Automobile</option>
-                    <option value="fashion">Fashion</option>
-                    <option value="history">History</option>
-                    <option value="media">Media</option>
-                    <option value="science">Science</option>
-                    <option value="sports">Sports</option>
-                    <option value="technology">Technology</option>
+                    <option value="Art">Art</option>
+                    <option value="Automobile">Automobile</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="History">History</option>
+                    <option value="Media">Media</option>
+                    <option value="Science">Science</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Technology">Technology</option>
                 </select>
               </div>
             </div>
