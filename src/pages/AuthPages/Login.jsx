@@ -15,10 +15,11 @@ const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const [inputMail, setInputMail] = useState("");
   
-  if (currentUser) {
-    navigate("/");
-    return;
-  }
+  // if (currentUser) {
+  //   navigate("/");
+  //   return;
+  // }
+  // Had to comment it out to keep the other navigation functionality (look at: const from)
   
   const handleShowPass = () => {
     setShowPass(!showPass);

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, Toaster } from "sonner";
 import AuthContext from "../../contexts/authContext/AuthContext";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const {
@@ -43,7 +44,7 @@ const SignUp = () => {
 
   const checkSix = /^(?=.{6,})/;
   const checkUpper = /^(?=.*[A-Z])/;
-  const checkSpecial = /(?=.*[!#$%&? "])/;
+  const checkSpecial = /(?=.*[!@#$%^&*(),.?":{}|<>_ ])/;
   const checkNumber = /^(?=.*\d)/;
 
   const handleSignUp = (e) => {
@@ -92,6 +93,11 @@ const SignUp = () => {
               displayName: name,
               photoURL: pic,
             }));
+            Swal.fire({
+              title: "Signup Successful",
+              text: `${name} has registered successfully!`,
+              icon: "success"
+            });
             navigate("/");
             setLoading(false);
           })

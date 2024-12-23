@@ -85,13 +85,13 @@ const AddBlog = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-5">
               <div className="w-full">
                 <p className="mb-1 font-medium">User Email</p>
-                <p className="rounded-lg p-2 border w-full opacity-80">
+                <p className="rounded-lg p-2 border w-full bg-accent opacity-80">
                   {currentUser?.email}
                 </p>
               </div>
               <div className="w-full">
                 <p className="mb-1 font-medium">User Name</p>
-                <p className="rounded-lg p-2 border w-full opacity-80">
+                <p className="rounded-lg p-2 border w-full bg-accent opacity-80">
                   {currentUser?.displayName}
                 </p>
               </div>
@@ -99,7 +99,7 @@ const AddBlog = () => {
             <div className="flex items-center justify-end">
               <input
                 type="submit"
-                value="Submit Review"
+                value="Submit Post"
                 className="text-white font-bold px-6 py-2 my-4 rounded-lg bg-prim2 cursor-pointer hover:bg-primary hover:shadow-xl transition"
               />
             </div>
