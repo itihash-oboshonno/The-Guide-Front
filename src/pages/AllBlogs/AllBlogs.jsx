@@ -50,11 +50,11 @@ const AllBlogs = () => {
 
   return (
     <div className="max-w-screen-2xl mx-auto px-4">
-      <div className="grid lgx:grid-cols-2 gap-8">
+      <div className="grid lgxx:grid-cols-2 gap-8 mt-4 mb-32">
         {allBlogs.map((blog) => (
           <div
             key={blog._id}
-            className="flex flex-col md:flex-row items-center justify-center gap-4 border rounded-2xl shadow-lg"
+            className="flex flex-col md:flex-row items-center gap-4 border rounded-2xl shadow-lg"
           >
             <div>
               <img
@@ -74,7 +74,7 @@ const AllBlogs = () => {
               <p className="opacity-80">
                 {blog.shortDescription.slice(0, 100)}...
               </p>
-              <div className="flex items-center justify-end gap-4">
+              <div className="flex items-center justify-start gap-4">
                 <Link to={`/post/${blog._id}`}>
                   <button className="text-white text-sm bg-prim2 px-4 py-2 md:px-6 md:py-2.5 rounded-full hover:shadow-lg hover:bg-primary transition-all">
                     View Details

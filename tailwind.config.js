@@ -20,6 +20,7 @@ export default {
         'xs': '480px',
         'mdb': '896px',
         'lgx': '1152px',
+        'lgxx': '1480px'
       },
     },
   },
