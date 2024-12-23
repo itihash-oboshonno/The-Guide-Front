@@ -1,10 +1,45 @@
 import React, { useContext, useRef } from "react";
 import AuthContext from "../../../contexts/authContext/AuthContext";
+import Swal from "sweetalert2";
 
 const AddBlog = () => {
 
     const {currentUser} = useContext(AuthContext);
     const formRef = useRef(null);
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const title = e.target.title.value;
+      const cover = e.target.cover.value;
+      const category = e.target.category.value;
+      const shortDescription = e.target.shortDescription.value;
+      const longDescription = e.target.longDescription.value;
+      const authorName = currentUser.displayName;
+      const authorMail = currentUser.email;
+
+      const newPost = {
+        title, cover, category, shortDescription, longDescription, authorName, authorMail
+      }
+
+      fetch('http://localhost:5000/blogs', {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newPost),
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          formRef.current.reset();
+          Swal.fire({
+            title: "Success!",
+            text: "Your blog has been posted!",
+            icon: "success",
+          });
+        }
+      })
+    }
 
   return (
     <div>
@@ -24,7 +59,7 @@ const AddBlog = () => {
       </div>
 
       <div className="max-w-4xl mx-auto mt-4 mb-16 px-4">
-        <form className="grid gap-5" ref={formRef}>
+        <form onSubmit={handleSubmit} className="grid gap-5" ref={formRef}>
         <div className="flex flex-col md:flex-row items-center justify-center gap-5">
               <div className="w-full">
                 <p className="mb-1 font-medium">Post Title</p>

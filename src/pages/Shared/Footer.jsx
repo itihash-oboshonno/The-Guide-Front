@@ -58,7 +58,7 @@ const Footer = () => {
             </div>
             <hr />
             <div className="max-w-screen-2xl mx-auto flex flex-col gap-4 md:flex-row justify-between items-center px-4 py-8 text-white text-sm">
-                <p>&#169; Kypseli 2024 All Rights Reserved</p>
+                <p>&#169; TheGuide 2024 All Rights Reserved</p>
                 <p className='flex items-center gap-1'>Made by <Link to="https://github.com/itihash-oboshonno" className='flex items-center gap-1 hover:text-accent transition'>Ahmed Abrar Ariyan <FaGithub/></Link></p>
             </div>
         </div>
