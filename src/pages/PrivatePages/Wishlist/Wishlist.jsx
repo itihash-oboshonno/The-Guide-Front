@@ -65,7 +65,7 @@ const Wishlist = () => {
 
   return (
     <div>
-      <div>
+      <div className="max-w-screen-2xl mx-auto px-4">
         <div>
           {fetchedData ? (
             <div className="flex flex-col gap-5 py-10">
@@ -97,8 +97,6 @@ const Wishlist = () => {
                           <div>
                             <button
                               onClick={() => handleDelete(prottek._id)}
-                              data-tooltip-id="my-tooltip"
-                              data-tooltip-content="Delete"
                               className="text-2xl"
                             >
                               <MdDeleteForever />
