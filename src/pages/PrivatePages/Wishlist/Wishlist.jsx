@@ -1,11 +1,126 @@
-import React from 'react';
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "../../../contexts/authContext/AuthContext";
+import Swal from "sweetalert2";
+import { MdDeleteForever } from "react-icons/md";
+import Loading from "../../Shared/Loading";
+import { toast, Toaster } from "sonner";
 
 const Wishlist = () => {
-    return (
+  const { currentUser } = useContext(AuthContext);
+  const wishMail = currentUser.email;
+  const [thisLoading, setThisLoading] = useState(true);
+  const [fetchedData, setFetchedData] = useState(null);
+
+  useEffect(() => {
+    const dataFetch = async () => {
+      try {
+        setThisLoading(true);
+        const response = await fetch(
+          `http://localhost:5000/mywishlist?searchParams=${wishMail}`
+        );
+        const result = await response.json();
+        setFetchedData(result.length ? result : null);
+      } catch (err) {
+        toast.error(err.message);
+      } finally {
+        setThisLoading(false);
+      }
+    };
+
+    dataFetch();
+  }, [wishMail]);
+
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/mywishlist/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Post removed from your wishlist.",
+                icon: "success",
+              });
+              setFetchedData(fetchedData.filter((y) => y._id !== _id));
+            }
+          });
+      }
+    });
+  };
+
+  if (thisLoading) {
+    return <Loading></Loading>;
+  }
+
+  return (
+    <div>
+      <div>
         <div>
-            
+          {fetchedData ? (
+            <div className="flex flex-col gap-5 py-10">
+              <div className="overflow-x-auto">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Words</th>
+                      <th>Category</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {fetchedData.map((prottek, index) => (
+                      <tr className="hover" key={prottek._id}>
+                        <th>{index + 1}</th>
+                        <td className="font-bold">{prottek.title}</td>
+                        <td>
+                          {prottek.shortDescription.length > 50
+                            ? `${prottek.shortDescription.slice(0, 50)}...`
+                            : prottek.shortDescription}
+                        </td>
+                        <td>{prottek.longDescription.trim().split(/\s+/).length}</td>
+                        <td>{prottek.category}</td>
+                        <td>
+                          <div>
+                            <button
+                              onClick={() => handleDelete(prottek._id)}
+                              data-tooltip-id="my-tooltip"
+                              data-tooltip-content="Delete"
+                              className="text-2xl"
+                            >
+                              <MdDeleteForever />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ) : (
+            <p className="text-center text-lg md:text-2xl font-medium py-10">
+              You haven't added any blogs to your wishlist yet.
+            </p>
+          )}
         </div>
-    );
+      </div>
+      <Toaster position="top-center" expand={false} richColors />
+    </div>
+  );
 };
 
 export default Wishlist;
