@@ -7,7 +7,7 @@ import { toast, Toaster } from "sonner";
 
 const Wishlist = () => {
   const { currentUser } = useContext(AuthContext);
-  const wishMail = currentUser.email;
+  const wishUser = currentUser.uid;
   const [thisLoading, setThisLoading] = useState(true);
   const [fetchedData, setFetchedData] = useState(null);
 
@@ -16,7 +16,7 @@ const Wishlist = () => {
       try {
         setThisLoading(true);
         const response = await fetch(
-          `http://localhost:5000/mywishlist?searchParams=${wishMail}`
+          `http://localhost:5000/mywishlist?searchParams=${wishUser}`
         );
         const result = await response.json();
         setFetchedData(result.length ? result : null);
@@ -28,7 +28,7 @@ const Wishlist = () => {
     };
 
     dataFetch();
-  }, [wishMail]);
+  }, [wishUser]);
 
   const handleDelete = (_id) => {
     Swal.fire({

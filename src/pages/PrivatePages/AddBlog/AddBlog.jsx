@@ -16,9 +16,10 @@ const AddBlog = () => {
       const longDescription = e.target.longDescription.value;
       const authorName = currentUser.displayName;
       const authorMail = currentUser.email;
+      const uniqueId = currentUser.uid;
 
       const newPost = {
-        title, cover, category, shortDescription, longDescription, authorName, authorMail
+        title, cover, category, shortDescription, longDescription, authorName, authorMail, uniqueId
       }
 
       fetch('http://localhost:5000/blogs', {

@@ -27,7 +27,7 @@ const AllBlogs = () => {
         longDescription,
         authorName,
         authorMail,
-        wishListsUser: currentUser.email,
+        wishListsUser: currentUser.uid,
         wishListsName: currentUser.displayName,
       };
       fetch("http://localhost:5000/wishlist", {
