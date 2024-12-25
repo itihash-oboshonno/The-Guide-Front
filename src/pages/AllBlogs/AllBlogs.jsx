@@ -63,15 +63,8 @@ const AllBlogs = () => {
   // end of search and filter
 
   const handleWishlist = (blog) => {
-    const {
-      title,
-      cover,
-      category,
-      shortDescription,
-      longDescription,
-      authorName,
-      authorMail,
-    } = blog;
+    const { _id, title, cover, category, shortDescription, longDescription, authorName, authorMail, } = blog;
+    const blogId = _id;
 
     if (currentUser) {
       const wishObj = {
@@ -84,6 +77,7 @@ const AllBlogs = () => {
         authorMail,
         wishListsUser: currentUser.uid,
         wishListsName: currentUser.displayName,
+        blogId,
       };
       fetch("http://localhost:5000/wishlist", {
         method: "POST",

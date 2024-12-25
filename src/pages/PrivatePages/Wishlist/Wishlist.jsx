@@ -4,6 +4,8 @@ import Swal from "sweetalert2";
 import { MdDeleteForever } from "react-icons/md";
 import Loading from "../../Shared/Loading";
 import { toast, Toaster } from "sonner";
+import { BiSolidDetail } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const Wishlist = () => {
   const { currentUser } = useContext(AuthContext);
@@ -91,10 +93,17 @@ const Wishlist = () => {
                             ? `${prottek.shortDescription.slice(0, 50)}...`
                             : prottek.shortDescription}
                         </td>
-                        <td>{prottek.longDescription.trim().split(/\s+/).length}</td>
+                        <td>
+                          {prottek.longDescription.trim().split(/\s+/).length}
+                        </td>
                         <td>{prottek.category}</td>
                         <td>
-                          <div>
+                          <div className="flex gap-4">
+                            <Link to={`/post/${prottek.blogId}`}>
+                              <button className="text-2xl">
+                                <BiSolidDetail />
+                              </button>
+                            </Link>
                             <button
                               onClick={() => handleDelete(prottek._id)}
                               className="text-2xl"
