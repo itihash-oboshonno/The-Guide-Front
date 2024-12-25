@@ -1,11 +1,66 @@
-import React, { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/authContext/AuthContext";
 import { toast, Toaster } from "sonner";
+import axios from "axios";
 
 const AllBlogs = () => {
   const { currentUser } = useContext(AuthContext);
-  const allBlogs = useLoaderData();
+
+  // search and filter functionality area:
+  const [searchQuery, setSearchQuery] = useState(""); // Search input
+  const [filterBy, setFilterBy] = useState(""); // Selected category
+  const [dataToShow, setDataToShow] = useState([]); // Fetched data
+  const [suggestions, setSuggestions] = useState([]); // Title suggestions
+
+  const dataFetch = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/conditionalblogs`,
+        {
+          params: { searchQuery, filterBy },
+        }
+      );
+      const result = await response.data;
+      setDataToShow(result);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  // const fetchSuggestions = async (input) => {
+  //   try {
+  //     const response = await axios.get(
+  //       `http://localhost:5000/conditionalblogs`,
+  //       {
+  //         params: { searchQuery: input },
+  //       }
+  //     );
+  //     setSuggestions(response.data.map((proti) => proti.title)); // Extract titles for suggestions
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
+  useEffect(() => {
+    dataFetch();
+  }, [searchQuery, filterBy]);
+
+  // const handleSearch = (e) => {
+  //   const input = e.target.value;
+  //   setSearchQuery(input);
+  //   if (input) {
+  //     fetchSuggestions(input);
+  //   } else {
+  //     setSuggestions([]);
+  //   }
+  // };
+
+  // const handleSuggestionClick = (title) => {
+  //   setSearchQuery(title);
+  //   setSuggestions([]);
+  // };
+  // end of search and filter
 
   const handleWishlist = (blog) => {
     const {
@@ -50,8 +105,50 @@ const AllBlogs = () => {
 
   return (
     <div className="max-w-screen-2xl mx-auto px-4">
+
+      {/* <div>
+        <input
+          type="text"
+          className="rounded-lg p-2 border w-full"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
+        {suggestions.length > 0 && (
+          <ul className="border p-2 rounded bg-white">
+            {suggestions.map((suggestion, index) => (
+              <li
+                key={index}
+                className="cursor-pointer hover:bg-gray-200 p-1"
+                onClick={() => handleSuggestionClick(suggestion)}
+              >
+                {suggestion}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div> */}
+      <div>
+        <select
+          value={filterBy}
+          onChange={(e) => setFilterBy(e.target.value)}
+          name="category"
+          className="rounded-lg p-2 border w-full"
+        >
+          <option value="">All Categories</option>
+          <option value="Art">Art</option>
+          <option value="Automobile">Automobile</option>
+          <option value="Fashion">Fashion</option>
+          <option value="History">History</option>
+          <option value="Media">Media</option>
+          <option value="Science">Science</option>
+          <option value="Sports">Sports</option>
+          <option value="Technology">Technology</option>
+        </select>
+      </div>
+
       <div className="grid lgxx:grid-cols-2 gap-8 mt-4 mb-32">
-        {allBlogs.map((blog) => (
+        {dataToShow.map((blog) => (
           <div
             key={blog._id}
             className="flex flex-col md:flex-row items-center gap-4 border rounded-2xl shadow-lg"
