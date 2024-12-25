@@ -28,38 +28,38 @@ const AllBlogs = () => {
     }
   };
 
-  // const fetchSuggestions = async (input) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `http://localhost:5000/conditionalblogs`,
-  //       {
-  //         params: { searchQuery: input },
-  //       }
-  //     );
-  //     setSuggestions(response.data.map((proti) => proti.title)); // Extract titles for suggestions
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
+  const fetchSuggestions = async (input) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/conditionalblogs`,
+        {
+          params: { searchQuery: input },
+        }
+      );
+      setSuggestions(response.data.map((proti) => proti.title)); // Extract titles for suggestions
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   useEffect(() => {
     dataFetch();
   }, [searchQuery, filterBy]);
 
-  // const handleSearch = (e) => {
-  //   const input = e.target.value;
-  //   setSearchQuery(input);
-  //   if (input) {
-  //     fetchSuggestions(input);
-  //   } else {
-  //     setSuggestions([]);
-  //   }
-  // };
+  const handleSearch = (e) => {
+    const input = e.target.value;
+    setSearchQuery(input);
+    if (input) {
+      fetchSuggestions(input);
+    } else {
+      setSuggestions([]);
+    }
+  };
 
-  // const handleSuggestionClick = (title) => {
-  //   setSearchQuery(title);
-  //   setSuggestions([]);
-  // };
+  const handleSuggestionClick = (title) => {
+    setSearchQuery(title);
+    setSuggestions([]);
+  };
   // end of search and filter
 
   const handleWishlist = (blog) => {
@@ -100,7 +100,8 @@ const AllBlogs = () => {
   return (
     <div className="max-w-screen-2xl mx-auto px-4">
 
-      {/* <div>
+      {/*  */}
+      <div>
         <input
           type="text"
           className="rounded-lg p-2 border w-full"
@@ -121,7 +122,8 @@ const AllBlogs = () => {
             ))}
           </ul>
         )}
-      </div> */}
+      </div>
+      
       <div>
         <select
           value={filterBy}
