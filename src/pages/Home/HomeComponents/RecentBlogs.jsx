@@ -6,7 +6,7 @@ const RecentBlogs = () => {
   const [loadedBlogs, setLoadedBlogs] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/recentblogs")
+    fetch("https://theguidebb.vercel.app/recentblogs")
       .then((res) => res.json())
       .then((data) => setLoadedBlogs(data));
   }, []);
@@ -28,7 +28,7 @@ const RecentBlogs = () => {
         wishListsName: currentUser.displayName,
         blogId,
       };
-      fetch("http://localhost:5000/wishlist", {
+      fetch("https://theguidebb.vercel.app/wishlist", {
         method: "POST",
         headers: {
           "content-type": "application/json",

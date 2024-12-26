@@ -8,7 +8,7 @@ const SubNewsLetter = () => {
     e.preventDefault();
     const email = e.target.subEmail.value;
     const subcriber = {email};
-    fetch("http://localhost:5000/subscribers", {
+    fetch("https://theguidebb.vercel.app/subscribers", {
       method: "POST",
       headers: {
         'content-type': 'application/json'

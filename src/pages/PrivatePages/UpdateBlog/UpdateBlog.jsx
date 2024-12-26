@@ -38,7 +38,7 @@ const UpdateBlog = () => {
       authorMail,
     };
 
-    fetch(`http://localhost:5000/blog/${_id}`, {
+    fetch(`https://theguidebb.vercel.app/blog/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -8,7 +8,7 @@ const FeaturedBlogs = () => {
   const {data, isLoading} = useQuery({
     queryKey: ['topten'],
     queryFn: async () => {
-    const {data} = await axios.get('http://localhost:5000/featuredblogs')
+    const {data} = await axios.get('https://theguidebb.vercel.app/featuredblogs')
     return data;
   }
 })

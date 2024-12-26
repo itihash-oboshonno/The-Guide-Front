@@ -19,7 +19,7 @@ const DetailedBlog = () => {
     const blogId = blog._id;
     const newComment = { name, image, comContent, blogId };
 
-    fetch("http://localhost:5000/comments", {
+    fetch("https://theguidebb.vercel.app/comments", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -38,7 +38,7 @@ const DetailedBlog = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/comments/${blog._id}`)
+    fetch(`https://theguidebb.vercel.app/comments/${blog._id}`)
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, []);

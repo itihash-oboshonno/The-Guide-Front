@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
       if (user?.uid) {
         const beboharkari = { uid: user.uid };
         const { data } = await axios.post(
-          `http://localhost:5000/jwt`,
+          `https://theguidebb.vercel.app/jwt`,
           beboharkari,
           { withCredentials: true }
         );
@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
         console.log(data);
       } else {
         const { data } = await axios.get(
-          `http://localhost:5000/logout`,
+          `https://theguidebb.vercel.app/logout`,
           { withCredentials: true }
         );
       }

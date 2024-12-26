@@ -16,7 +16,7 @@ const AllBlogs = () => {
   const dataFetch = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/conditionalblogs`,
+        `https://theguidebb.vercel.app/conditionalblogs`,
         {
           params: { searchQuery, filterBy },
         }
@@ -31,7 +31,7 @@ const AllBlogs = () => {
   const fetchSuggestions = async (input) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/conditionalblogs`,
+        `https://theguidebb.vercel.app/conditionalblogs`,
         {
           params: { searchQuery: input },
         }
@@ -79,7 +79,7 @@ const AllBlogs = () => {
         wishListsName: currentUser.displayName,
         blogId,
       };
-      fetch("http://localhost:5000/wishlist", {
+      fetch("https://theguidebb.vercel.app/wishlist", {
         method: "POST",
         headers: {
           "content-type": "application/json",

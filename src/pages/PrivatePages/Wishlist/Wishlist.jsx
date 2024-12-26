@@ -44,7 +44,7 @@ const Wishlist = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/mywishlist/${_id}`, {
+        fetch(`https://theguidebb.vercel.app/mywishlist/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
