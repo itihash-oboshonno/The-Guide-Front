@@ -6,8 +6,10 @@ import Loading from "../../Shared/Loading";
 import { toast, Toaster } from "sonner";
 import { BiSolidDetail } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Wishlist = () => {
+  const axiosSecure = useAxiosSecure();
   const { currentUser } = useContext(AuthContext);
   const wishUser = currentUser.uid;
   const [thisLoading, setThisLoading] = useState(true);
@@ -17,11 +19,10 @@ const Wishlist = () => {
     const dataFetch = async () => {
       try {
         setThisLoading(true);
-        const response = await fetch(
-          `http://localhost:5000/mywishlist?searchParams=${wishUser}`
+        const {data} = await axiosSecure.get(
+          `/mywishlist/${wishUser}`
         );
-        const result = await response.json();
-        setFetchedData(result.length ? result : null);
+        setFetchedData(data.length ? data : null);
       } catch (err) {
         toast.error(err.message);
       } finally {
