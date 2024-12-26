@@ -49,7 +49,7 @@ const RecentBlogs = () => {
   return (
     <div className="max-w-screen-2xl mx-auto px-4 my-8">
         <div>
-            <h2 className="text-4xl text-center font-bold my-8">Recent Blogs</h2>
+            <h2 className="text-2xl md:text-4xl text-center font-bold my-8">Recent Blogs</h2>
         </div>
 
       <div className="grid lgxx:grid-cols-2 gap-8 my-4">
