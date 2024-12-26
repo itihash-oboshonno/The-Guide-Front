@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import Loading from "../Shared/Loading";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const FeaturedBlogs = () => {
-  const featBlogs = useLoaderData();
-  const [thisLoading, setThisLoading] = useState(true);
+  const {data, isLoading} = useQuery({
+    queryKey: ['topten'],
+    queryFn: async () => {
+    const {data} = await axios.get('http://localhost:5000/featuredblogs')
+    return data;
+  }
+})
 
-  useEffect(() => {
-    if (featBlogs) {
-      setThisLoading(false);
-    }
-  }, []);
-
-  if (thisLoading) {
+  if (isLoading) {
     return <Loading></Loading>;
   }
+
+console.log(data);
 
   return (
     <div>
       <div className="max-w-screen-2xl mx-auto px-4">
         <div>
-          {featBlogs ? (
+          {data ? (
             <div className="flex flex-col gap-5 py-10">
               <div className="overflow-x-auto">
                 <table className="table">
@@ -35,7 +38,7 @@ const FeaturedBlogs = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {featBlogs.map((prottek, index) => (
+                    {data.map((prottek, index) => (
                       <tr className="hover" key={prottek._id}>
                         <th>{index + 1}</th>
                         <td className="font-bold">{prottek.title}</td>
