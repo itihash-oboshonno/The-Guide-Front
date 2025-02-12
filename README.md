@@ -61,3 +61,7 @@ TheGuide is a dynamic and feature-rich blog website that allows users to read, w
    - Recent Blogs section: Displays the 6 latest blogs.
    - Additional sections for an engaging user experience.
 
+2. **Blog Details**:
+   - Full content of the blog.
+   - Option to comment (if not the author).
+
