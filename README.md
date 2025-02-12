@@ -57,22 +57,3 @@ TheGuide is a dynamic and feature-rich blog website that allows users to read, w
 
 ## Pages 📄
 
-1. **Homepage**:
-   - Recent Blogs section: Displays the 6 latest blogs.
-   - Additional sections for an engaging user experience.
-
-2. **Blog Details**:
-   - Full content of the blog.
-   - Option to comment (if not the author).
-
-3. **Write Blog**: Create and publish a new blog post.
-
-4. **Update Blog**: Update a blog (only available for the author).
-
-5. **Wishlist**: View your saved blogs.
-
-6. **Featured Blogs**: Top 10 blogs with the highest word count.
-
-7. **Newsletter Subscription**: Subscribe to stay updated.
-
----
