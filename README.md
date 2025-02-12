@@ -71,3 +71,8 @@ TheGuide is a dynamic and feature-rich blog website that allows users to read, w
 
 5. **Wishlist**: View your saved blogs.
 
+6. **Featured Blogs**: Top 10 blogs with the highest word count.
+
+7. **Newsletter Subscription**: Subscribe to stay updated.
+
+---
