@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: `/post/:id`,
-        element: <PrivateRoute><DetailedBlog></DetailedBlog></PrivateRoute>,
+        element: <DetailedBlog></DetailedBlog>,
         loader: ({ params }) => fetch(`https://theguidebb.vercel.app/blog/${params.id}`),
       },
       {

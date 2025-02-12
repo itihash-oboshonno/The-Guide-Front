@@ -25,7 +25,7 @@ const SubNewsLetter = () => {
   };
 
   return (
-    <div className="max-w-screen-2xl mx-auto px-4 my-8">
+    <div className="max-w-screen-2xl mx-auto px-4 py-16">
       <div className="bg-prim3 bg-opacity-20 rounded-2xl">
       <div className="flex flex-col gap-8 items-center py-8 w-full">
         <div>

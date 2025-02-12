@@ -15,7 +15,7 @@ const DetailedBlog = () => {
     e.preventDefault();
     const comContent = e.target.commentBox.value;
     const name = currentUser.displayName;
-    const image = currentUser.photoURL;    
+    const image = currentUser.photoURL;
     const blogId = blog._id;
     const newComment = { name, image, comContent, blogId };
 
@@ -46,7 +46,7 @@ const DetailedBlog = () => {
   return (
     <div className="max-w-4xl mx-auto px-4">
       <div>
-        {currentUser.uid === blog.uniqueId ? (
+        {currentUser?.uid === blog.uniqueId ? (
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 py-4">
             <Link to={`/updatePost/${blog._id}`}>
               <button className="text-white font-bold px-6 py-2 my-4 rounded-lg bg-green-600 cursor-pointer hover:bg-green-700 hover:shadow-xl transition">
@@ -62,7 +62,7 @@ const DetailedBlog = () => {
           ""
         )}
       </div>
-      <h1 className="text-4xl text-center font-bold pb-4">{blog.title}</h1>
+      <h1 className="text-2xl md:text-4xl text-center font-bold pb-4">{blog.title}</h1>
       <div className="flex items-center justify-center gap-8">
         <p className="flex items-center gap-1 font-medium">
           <FaPenNib /> {blog.authorName}
@@ -81,43 +81,56 @@ const DetailedBlog = () => {
         ></div>
       </div>
       <hr className="my-8" />
-      <div className="my-8">
-        {currentUser.uid === blog.uniqueId ? (
-          <p className="font-bold text-center text-2xl">
-            Author cannot comment on own post!
-          </p>
-        ) : (
-          <div>
-            <form onSubmit={handleComment} ref={formRef}>
-              <div className="flex items-center gap-4 py-2">
-                <img
-                  className="h-9 w-9 object-cover rounded-full"
-                  src={currentUser.photoURL}
-                  alt=""
-                />
-                <p className="font-semibold">{currentUser.displayName}</p>
+      <div>
+        {currentUser ? (
+          <div className="my-8">
+            {currentUser.uid === blog.uniqueId ? (
+              <p className="font-bold text-center text-2xl">
+                Author cannot comment on own post!
+              </p>
+            ) : (
+              <div>
+                <form onSubmit={handleComment} ref={formRef}>
+                  <div className="flex items-center gap-4 py-2">
+                    <img
+                      className="h-9 w-9 object-cover rounded-full"
+                      src={currentUser.photoURL}
+                      alt=""
+                    />
+                    <p className="font-semibold">{currentUser.displayName}</p>
+                  </div>
+                  <textarea
+                    type="text"
+                    name="commentBox"
+                    placeholder="Write your comment..."
+                    className="rounded-lg p-2 border w-full"
+                    required
+                  />
+                  <input
+                    type="submit"
+                    value="Comment"
+                    className="text-white font-bold px-6 py-2 my-4 rounded-lg bg-prim2 cursor-pointer hover:bg-primary hover:shadow-xl transition"
+                  />
+                </form>
               </div>
-              <textarea
-                type="text"
-                name="commentBox"
-                placeholder="Write your comment..."
-                className="rounded-lg p-2 border w-full"
-                required
-              />
-              <input
-                type="submit"
-                value="Comment"
-                className="text-white font-bold px-6 py-2 my-4 rounded-lg bg-prim2 cursor-pointer hover:bg-primary hover:shadow-xl transition"
-              />
-            </form>
+            )}
+          </div>
+        ) : (
+          <div className="mb-20">
+            <p className="text-center text-xl">
+              Please{" "}
+              <Link className="text-primary underline" to="/login">
+                login
+              </Link>{" "}
+              to comment on post
+            </p>
           </div>
         )}
       </div>
       <div className="mb-20">
         <p className="font-bold text-xl my-8">Comments</p>
-        {
-          comments.length > 0 
-          ? (<div className="grid gap-8">
+        {comments.length > 0 ? (
+          <div className="grid gap-8">
             {comments.map((each) => (
               <div className="flex gap-4" key={each._id}>
                 <img
@@ -131,9 +144,10 @@ const DetailedBlog = () => {
                 </div>
               </div>
             ))}
-          </div>)
-          : <p className="text-center text-xl">No Comments Yet</p>
-        }
+          </div>
+        ) : (
+          <p className="text-center text-xl">No Comments Yet</p>
+        )}
       </div>
       <Toaster position="top-center" expand={false} richColors />
     </div>
