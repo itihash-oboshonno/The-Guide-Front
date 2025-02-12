@@ -67,3 +67,5 @@ TheGuide is a dynamic and feature-rich blog website that allows users to read, w
 
 3. **Write Blog**: Create and publish a new blog post.
 
+4. **Update Blog**: Update a blog (only available for the author).
+
